@@ -21,7 +21,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
-data "template_file" "basic_auth_js" {
+data "templatefile" "basic_auth_js" {
   template = file("${path.module}/basic_auth.js.tpl")
 
   vars = {
@@ -34,7 +34,7 @@ data "archive_file" "basic_auth_lambda_zip" {
   type = "zip"
 
   output_path             = "basic_auth_lambda.zip"
-  source_content          = data.template_file.basic_auth_js.rendered
+  source_content          = data.templatefile.basic_auth_js.rendered
   source_content_filename = "basic_auth.js"
 }
 
