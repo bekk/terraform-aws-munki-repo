@@ -21,7 +21,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
-data "templatefile()" "basic_auth_js" {
+data templatefile(basic_auth_js) {
   templatefile = file("${path.module}/basic_auth.js.tpl")
 
   vars = {
