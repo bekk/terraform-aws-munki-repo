@@ -22,7 +22,7 @@ EOF
 }
 
 data "templatefile" "basic_auth_js" {
-  template = file("${path.module}/basic_auth.js.tpl")
+  templatefile = file("${path.module}/basic_auth.js.tpl")
 
   vars = {
     username = var.username
