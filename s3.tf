@@ -1,10 +1,10 @@
 resource "aws_s3_bucket" "www" {
   bucket = "${var.prefix}-${var.munki_s3_bucket}"
 
-  logging {
-    target_bucket = aws_s3_bucket.log_bucket.id
-    target_prefix = "logs/"
-  }
+  #logging {
+  #  target_bucket = aws_s3_bucket.log_bucket.id
+  #  target_prefix = "logs/"
+  #}
 
   acl = "private"
 
@@ -44,8 +44,10 @@ resource "aws_s3_bucket_policy" "www" {
   policy = data.aws_iam_policy_document.s3_policy.json
 }
 
-resource "aws_s3_bucket" "log_bucket" {
+resource "aws_s3_bucket_logging" "log_bucket" {
   bucket = "${var.prefix}-${var.munki_s3_bucket}-logs"
+  target_bucket = aws_s3_bucket.log_bucket.id
+  target_prefix = "log/"
   acl    = "log-delivery-write"
 
   lifecycle_rule {
