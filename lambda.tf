@@ -32,7 +32,7 @@ EOF
 
 data "template_file" "basic_auth_js" {
   
-  templatefile("${path.module}/basic_auth.js.tpl", { username = test, password = test } )
+  templatefile("${path.module}/basic_auth.js.tpl", username = test )
 
 }
 
