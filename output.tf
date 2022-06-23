@@ -1,9 +1,9 @@
 output "munki_bucket_id" {
-  value = aws_s3_bucket.www.id
+  value = aws_s3_bucket.bekk-munki-www.id
 }
 
 output "log_bucket_id" {
-  value = aws_s3_bucket.log_bucket.id
+  value = aws_s3_bucket.bekk-munki-log-bucket.id
 }
 
 output "cloudfront_id" {
