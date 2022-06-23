@@ -1,11 +1,5 @@
 resource "aws_s3_bucket" "www" {
   bucket = "${var.prefix}-${var.munki_s3_bucket}"
-
-  #logging {
-  #  target_bucket = aws_s3_bucket.log_bucket.id
-  #  target_prefix = "logs/"
-  #}
-
   acl = "private"
 
   server_side_encryption_configuration {
