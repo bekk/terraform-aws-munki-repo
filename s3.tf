@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "www" {
+resource "aws_s3_bucket" "${var.prefix}-${var.munki_s3_bucket}-www" {
   bucket = "${var.prefix}-${var.munki_s3_bucket}"
 }
 
@@ -12,7 +12,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "www-encryption" {
   }
 }
 
-resource "aws_s3_bucket" "log_bucket" {
+resource "aws_s3_bucket" "${var.prefix}-${var.munki_s3_bucket}-log_bucket" {
   bucket = "${var.prefix}-${var.munki_s3_bucket}-logs"
 }
 
@@ -20,7 +20,6 @@ resource "aws_s3_bucket_acl" "www-acl" {
   bucket = aws_s3_bucket.www.id
   acl = "private"
 }
-
 data "aws_iam_policy_document" "s3_policy" {
   statement {
     actions   = ["s3:GetObject"]
@@ -44,7 +43,7 @@ data "aws_iam_policy_document" "s3_policy" {
 }
 
 resource "aws_s3_bucket_policy" "www" {
-  bucket = aws_s3_bucket.www.id
+  bucket = aws_s3_bucket.${var.prefix}-${var.munki_s3_bucket}-www.id
   policy = data.aws_iam_policy_document.s3_policy.json
 }
 
@@ -54,7 +53,7 @@ resource "aws_s3_bucket_acl" "log_bucket_acl" {
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "log-lifecycle" {
-  bucket = aws_s3_bucket.log_bucket.id
+  bucket = aws_s3_bucket.${var.prefix}-${var.munki_s3_bucket}-log_bucket.id
   rule {
     id = "rule-1"
     
@@ -66,9 +65,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "log-lifecycle" {
     }
   }
 }
-
 resource "aws_s3_bucket_logging" "log_bucket" {
-  bucket = aws_s3_bucket.www.id
-  target_bucket = aws_s3_bucket.log_bucket.id
+  bucket = aws_s3_bucket.${var.prefix}-${var.munki_s3_bucket}-www.id
+  target_bucket = aws_s3_bucket.${var.prefix}-${var.munki_s3_bucket}-log_bucket.id
   target_prefix = "log/"
 }
