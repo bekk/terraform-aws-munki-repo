@@ -30,17 +30,17 @@ EOF
  # }
 #}
 
-data "template_file" "basic_auth_js" {
+#data "template_file" "basic_auth_js" {
   
-  templatefile("${path.module}/basic_auth.js.tpl", { username = "${var.name}", password = "${var.password}" })
+ # templatefile("${path.module}/basic_auth.js.tpl", { username = "${var.name}", password = "${var.password}" })
 
-}
+#}
 
 data "archive_file" "basic_auth_lambda_zip" {
   type = "zip"
 
   output_path             = "basic_auth_lambda.zip"
-  source_content          = data.template_file.basic_auth_js.rendered
+  source_content          = templatefile("${path.module}/basic_auth.js.tpl",{ username = var.username, password = var.password } )
   source_content_filename = "basic_auth.js"
 }
 
