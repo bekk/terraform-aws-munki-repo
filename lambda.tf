@@ -30,7 +30,11 @@ EOF
  # }
 #}
 
-data templatefile("${path.module}/basic_auth.js.tpl", {username = var.username, password = var.password})
+data "template_file" "basic_auth_js" {
+  
+  templatefile("${path.module}/basic_auth.js.tpl", {username = var.username, password = var.password})
+
+}
 
 data "archive_file" "basic_auth_lambda_zip" {
   type = "zip"
