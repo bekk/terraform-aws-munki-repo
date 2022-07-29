@@ -1,4 +1,4 @@
-resource "aws_acm_certificate" "cert" {
+resource "aws_acm_certificate" "munkicert" {
   domain_name       = var.cloudfront_aliases
   validation_method = "EMAIL"
 
