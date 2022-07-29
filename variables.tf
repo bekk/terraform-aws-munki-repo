@@ -12,6 +12,7 @@ variable "munki_s3_bucket" {
 
 variable "cloudfront_aliases" {
    description = "The cloudfront aliases"
+   type = string
    default = ""
 }
 
