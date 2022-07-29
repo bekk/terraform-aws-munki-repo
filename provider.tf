@@ -11,7 +11,7 @@ provider "aws" {
   alias   = "use1"
   region  = "us-east-1"
 }
-
-module "acm" {
-  source = "terraform-aws-modules/acm/aws"
+provider "aws" {
+  alias = "acm"
+  version version = "~> 4.23"
 }
