@@ -2,7 +2,6 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   origin {
     // Here we're using our S3 bucket's URL!
     domain_name = aws_s3_bucket.bekk-munki-www.bucket_regional_domain_name
-    aliases = [var.cloudfront_aliases]
 
     // This can be any name to identify this origin.
     origin_id = "munki"
@@ -15,7 +14,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   enabled             = true
   default_root_object = "index.html"
   price_class         = var.price_class
-  #aliases             = [var.cloudfront_aliases]
+  aliases             = [var.cloudfront_aliases]
 
   // All values are defaults from the AWS console.
   default_cache_behavior {
