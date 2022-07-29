@@ -33,7 +33,7 @@ resource "aws_lambda_function" "basic_auth_lambda" {
   provider         = aws.use1
   filename         = "basic_auth_lambda.zip"
 #  function_name    = "${var.prefix}_basic_auth"
-  function_name    = "munki_basic_auth"
+  #function_name    = "munki_basic_auth"
   role             = aws_iam_role.iam_for_lambda.arn
   handler          = "basic_auth.handler"
   source_code_hash = data.archive_file.basic_auth_lambda_zip.output_base64sha256
