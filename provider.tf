@@ -13,5 +13,5 @@ provider "aws" {
 }
 provider "aws" {
   alias = "acm"
-  version version = "~> 4.23"
+  version = "~> 4.23"
 }
