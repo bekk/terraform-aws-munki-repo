@@ -12,7 +12,7 @@ variable "munki_s3_bucket" {
 
 variable "cloudfront_aliases" {
    description = "The cloudfront aliases"
-   defult = ""
+   default = ""
 }
 
 variable "prefix" {
