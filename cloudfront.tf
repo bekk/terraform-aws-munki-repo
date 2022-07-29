@@ -129,7 +129,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
 
   viewer_certificate {
     #cloudfront_default_certificate = true
-    viewer_certificate = munki-cert.id
+    iam_certificate_id = munki-cert.id
   }
 }
 
