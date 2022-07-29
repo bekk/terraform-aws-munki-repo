@@ -14,8 +14,4 @@ provider "aws" {
 
 module "acm" {
   source = "terraform-aws-modules/acm/aws"
-
-  providers = {
-    aws = aws.us-east-1
-  }
 }
