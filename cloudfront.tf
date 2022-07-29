@@ -15,7 +15,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   enabled             = true
   default_root_object = "index.html"
   price_class         = var.price_class
-  aliases             = [var.cloudfront_aliases]
+  #aliases             = [var.cloudfront_aliases]
 
   // All values are defaults from the AWS console.
   default_cache_behavior {
