@@ -2,6 +2,9 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
+      configuration_aliases = [
+         aws.acm,
+      ]
       version = "~> 4.23"
     }
   }
@@ -10,7 +13,4 @@ terraform {
 provider "aws" {
   alias   = "use1"
   region  = "us-east-1"
-}
-provider "aws" {
-  alias = "acm"
 }
