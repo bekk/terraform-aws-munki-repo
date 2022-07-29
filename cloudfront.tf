@@ -2,6 +2,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   origin {
     // Here we're using our S3 bucket's URL!
     domain_name = aws_s3_bucket.bekk-munki-www.bucket_regional_domain_name
+    aliases = [var.cloudfront_aliases]
 
     // This can be any name to identify this origin.
     origin_id = "munki"
