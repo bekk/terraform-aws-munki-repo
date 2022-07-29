@@ -10,6 +10,11 @@ variable "munki_s3_bucket" {
   description = "The name of your s3 Bucket"
 }
 
+varible "cloudfront_aliases" {
+   description = "The cloudfront aliases"
+   defult = ""
+}
+
 variable "prefix" {
   description = "Prefix before lambda and IAM names to ensure uniqueness in your account."
   default     = "munki"
