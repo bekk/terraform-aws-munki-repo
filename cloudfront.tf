@@ -128,7 +128,8 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    #cloudfront_default_certificate = true
+    viewer-certificate = munki-cert.id
   }
 }
 
