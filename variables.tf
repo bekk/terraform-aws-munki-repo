@@ -16,6 +16,12 @@ variable "cloudfront_aliases" {
    default = ""
 }
 
+variable "domain" {
+   description = "Domenenavn"
+   type = string
+   default = ""
+}
+
 variable "prefix" {
   description = "Prefix before lambda and IAM names to ensure uniqueness in your account."
   default     = "munki"
